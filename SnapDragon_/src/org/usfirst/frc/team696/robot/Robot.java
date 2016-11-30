@@ -50,6 +50,19 @@ public class Robot extends IterativeRobot {
 	Solenoid Shitf = new Solenoid(5); 
 	
 	/*
+	 * doubles 
+	 */
+	double speed = driver.getRawAxis(1);
+	/*
+	 * doubles 
+	 */
+	double speed = driver.getRawAxis(1); 
+	double wheel = driver.getRawAxis(4); 
+	double LeftDrive = 0; 
+	double RightDrive = 0; 
+	
+	
+	/*
 	 * Motor controllers 
 	 */
 	 Talon LeftIntake = new Talon(1); 
@@ -60,6 +73,8 @@ public class Robot extends IterativeRobot {
 	 Talon RightFront = new Talon(8);  // no port 7 
 	 Talon ShooterUp = new Talon(9); 
 	 Talon RightInatke = new Talon(10); 
+	 
+	 
 	 
     /**
      * This function is run when the robot is first started up and should be
@@ -106,6 +121,22 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	speed = driver.getRawAxis(1); 
+    	wheel = driver.getRawAxis(4); 
+    	LeftDrive = (speed - wheel); 
+    	RightDrive = (wheel + speed); 
+    	
+    	/*
+    	 * Shift buttons 
+    	 */
+    	
+    	/*
+    	 * Intake 
+    	 */
+    	if(driver.getRawButton(1) == true) { 
+    		LeftIntake.set(1);
+    	
+    	}
         
     }
     
